@@ -1,15 +1,37 @@
 .container {
     display: flex;
-    padding: 10px 30px;
+    padding: 10px 50px;
+}
+
+.wrapper {
+    padding: 10px 10px 10px 20px;
+    border-radius: 7px;
+    background-color: blueviolet;
+    color: white;
+    display: flex;
+    align-items: end;
 }
 
 .message {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: blueviolet;
-    color: white;
+    line-height: 27px;
+    word-break: break-all;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
-    word-break: break-all;
-    line-height: 27px;
+    color: white;
+}
+
+.time {
+    color: #999;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
+    align-items: end;
+}
+
+.left {
+    justify-content: start;
+}
+
+.right {
+    justify-content: end;
 }
