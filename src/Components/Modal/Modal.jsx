@@ -2,7 +2,6 @@ import classes from './Modal.module.css'
 
 const Modal = ({value, setValue, onKeyPress}) =>
 {
-    console.log(value)
     return (
         <div className={classes.modalOverlay}>
             <div className={classes.container}>
