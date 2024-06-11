@@ -58,7 +58,7 @@ const ChatWindow = () => {
 
     return (
         <>
-            <Modal isVisible={isModalVisible} value={inputUserText} setValue={e => setInputUserText(e.target.value)} onKeyPress={(e) => handleKeyPress(e, connect, setInputUserText)}/>
+            {isModalVisible ? <Modal value={inputUserText} setValue={e => setInputUserText(e.target.value)} onKeyPress={(e) => handleKeyPress(e, connect, setInputUserText)}/>: <></>}
             <div className={classes.container}>
                 <div className={classes.messageHistory}>
                     {messageHistory.map((x, i) => 

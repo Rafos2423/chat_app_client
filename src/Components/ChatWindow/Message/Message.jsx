@@ -1,6 +1,8 @@
 import classes from './Message.module.css'
+import { memo } from 'react';
 
-const Message = ({text, isMyMessage, receiveAt}) => {
+const Message = memo(({text, isMyMessage, receiveAt}) => {
+    console.log(text)
     return (
         <div className={`${classes.container} ${isMyMessage ? classes.left : classes.right}`}>
             <div className={classes.wrapper}>
@@ -13,6 +15,6 @@ const Message = ({text, isMyMessage, receiveAt}) => {
             </div>
         </div>
     )
-}
+})
 
 export default Message;

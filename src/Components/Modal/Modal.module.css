@@ -6,14 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.visible {
     z-index: 1;
-}
-
-.hide {
-    z-index: -1;
 }
 
 .container {

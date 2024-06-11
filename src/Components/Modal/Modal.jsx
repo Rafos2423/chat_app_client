@@ -1,9 +1,10 @@
 import classes from './Modal.module.css'
 
-const Modal = ({isVisible, value, setValue, onKeyPress}) =>
+const Modal = ({value, setValue, onKeyPress}) =>
 {
+    console.log(value)
     return (
-        <div className={`${classes.modalOverlay} ${isVisible ? classes.visible : classes.hide}`}>
+        <div className={classes.modalOverlay}>
             <div className={classes.container}>
                 <input type='text' className={classes.inputField} placeholder='Имя'
                     value={value} onChange={setValue}
