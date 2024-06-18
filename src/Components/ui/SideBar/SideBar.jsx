@@ -1,17 +1,31 @@
-import { useState } from 'react';
-import classes from './SideBar.module.css'
+import { useState, useEffect } from "react";
+import classes from "./SideBar.module.css";
 
-const SideBar = (props) => {
-    const [isHidden, setIsHidden] = useState(false);
+const SideBar = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const [buttonLabel, setButtonLabel] = useState("Скрыть");
 
-    return (
-        <div className={`${classes.container} ${isHidden ? classes.isHidden : ""}`}>
-            <div className={classes.options}></div>
-            <div className={classes.hideButtonContainer}>
-                <button className={classes.hideButton} onClick={() => setIsHidden(!isHidden)}>{isHidden ? "Открыть" : "Скрыть"}</button>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setButtonLabel(isHidden ? "Открыть" : "Скрыть");
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [isHidden]);
+
+  return (
+    <div className={`${classes.container} ${isHidden ? classes.isHidden : ""}`}>
+      <div className={classes.options}></div>
+      <div className={classes.hideButtonContainer}>
+        <button
+          className={classes.hideButton}
+          onClick={() => setIsHidden(!isHidden)}
+        >
+          {buttonLabel}
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default SideBar;
