@@ -10,6 +10,7 @@
     color: white;
     display: flex;
     align-items: end;
+    border: 1px solid white;
 }
 
 .message {

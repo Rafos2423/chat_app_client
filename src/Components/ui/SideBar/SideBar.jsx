@@ -8,7 +8,7 @@ const SideBar = (props) => {
         <div className={`${classes.container} ${isHidden ? classes.isHidden : ""}`}>
             <div className={classes.options}></div>
             <div className={classes.hideButtonContainer}>
-                <button className={classes.hideButton} onClick={() => setIsHidden(!isHidden)}>Скрыть</button>
+                <button className={classes.hideButton} onClick={() => setIsHidden(!isHidden)}>{isHidden ? "Открыть" : "Скрыть"}</button>
             </div>
         </div>
     )

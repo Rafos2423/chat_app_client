@@ -1,0 +1,27 @@
+@import url('./../../../../src/colors.css');
+
+.modalOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--squash300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    backdrop-filter: blur(5px); 
+    z-index: 1
+}
+
+.container {
+    position: absolute; 
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: var(--violet700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 1;
+}

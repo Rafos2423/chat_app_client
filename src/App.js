@@ -1,12 +1,22 @@
-import ChatWindow from "./Components/ChatWindow/ChatWindow";
-import SideBar from "./Components/SideBar/SideBar";
+import SideBar from "./Components/ui/SideBar/SideBar";
 import './App.css';
+import React, { useContext } from 'react';
+import Modal from "./Components/ui/Modal/Modal";
+import ChatWindow from "./Components/ui/ChatWindow/ChatWindow";
+import { ConnectionContext} from './Components/logic/Connection';
+
 
 function App() {
+  let { isModalVisible } = useContext(ConnectionContext);
+
   return (
     <div className="App">
-      <SideBar/>
-      <ChatWindow messages={["43252", "423"]}/>
+        {isModalVisible ? <Modal /> :
+          <>
+            <SideBar />
+            <ChatWindow />
+          </>
+        }
     </div>
   );
 }

@@ -1,23 +1,27 @@
 .container {
     height: 100vh;
-    min-width: 300px;
+    max-width: 300px;
     background-color: blueviolet;
-    transition: min-width 0.5s ease-in-out;
+    transition: max-width 0.5s ease-in-out;
+    display: flex;
+    overflow: visible;
 }
 
 .isHidden {
-    min-width: 100px;
+    max-width: 0px;
 }
 
 .options {
-    height: 95vh;
+    height: 100vh;
 }
 
 .hideButtonContainer {
     display: flex;
     justify-content: center;
     align-items: end;
-    padding-top: 10px;
+    margin: 20px;
+    width: 300px;
+    z-index: 1
 }
 
 .hideButton {
@@ -26,6 +30,6 @@
     background-color: blueviolet;
     font-size: 18px;
     color: white;
-    min-width: 60px;
-    padding: 10px 10px;
+    width: 100px;
+    padding: 10px;
 }
