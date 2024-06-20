@@ -5,21 +5,27 @@ export const ConnectionContext = createContext();
 
 export const ConnectionProvider = ({ children }) => {
   const [isModalVisible, setIsModalVisible] = useState(true);
-  const [messageHistory, setMessageHistory] = useState([]);
+  const [messageHistory, setMessageHistory] = useState({});
   const [connection, setConnection] = useState([]);
+  const [chatName, setChatName] = useState("");
+  const [userName, setUserName] = useState([]);
+  const [token, setToken] = useState([]);
 
-  const connect = async (name) => {
-    let token;
+  const login = async (name) => {
     await fetch(`http://localhost:5041/login?userName=${name}`, {
       method: "POST",
     })
       .then((response) => {
         if (response.ok) return response.json();
       })
-      .then((res) => (token = res.token));
+      .then((res) => {
+        setUserName(name)
+        setToken(res.token)
+        setIsModalVisible(false);
+      });
+  };
 
-    setConnection(new HubConnectionBuilder());
-
+  const connect = async (chatName) => {
     let conn = new HubConnectionBuilder()
       .withUrl("http://localhost:5041/chat", {
         accessTokenFactory: () => token,
@@ -28,39 +34,43 @@ export const ConnectionProvider = ({ children }) => {
       .withAutomaticReconnect()
       .build();
 
-    conn.on("ReceiveMessageAsync", (userName, message, receiveAt) =>
-      setMessageHistory((history) => [
-        ...history,
-        {
-          message: message,
-          isMyMessage: userName === name,
-          receiveAt: receiveAt,
-        },
-      ])
+    conn.on("ReceiveMessageAsync", (name, message, receiveAt) =>
+      setMessageHistory((prevHistory) => ({
+        ...prevHistory,
+        [chatName]: [
+          ...(prevHistory[chatName] || []),
+          {
+            message: message,
+            isMyMessage: userName === name,
+            receiveAt: receiveAt,
+          },
+        ],
+      }))
     );
 
     await conn.start();
-    await conn.invoke("JoinChatAsync", {
-      name,
-      chatRoom: "chatRoom123",
-    });
+    await conn.invoke("JoinChatAsync", chatName);
 
     setConnection(conn);
-    setIsModalVisible(false);
+    setChatName(chatName);
   };
 
-  const sendMessage = async (text) => {
-    console.log(connection);
-    try {
-      await connection.invoke("SendMessageAsync", text, null);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const sendMessage = async (text) =>
+    await connection
+      .invoke("SendMessageAsync", text, chatName)
+      .catch((e) => console.log(e));
 
   return (
     <ConnectionContext.Provider
-      value={{ connect, sendMessage, isModalVisible, messageHistory }}
+      value={{
+        login,
+        connect,
+        sendMessage,
+        messageHistory,
+        isModalVisible,
+        chatName,
+        userName
+      }}
     >
       {children}
     </ConnectionContext.Provider>

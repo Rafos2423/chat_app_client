@@ -1,9 +1,10 @@
 .container {
     height: 100vh;
-    max-width: 300px;
-    background-color: blueviolet;
+    max-width: 350px;
+    background-color: var(--violet700);
     transition: max-width 0.5s ease-in-out;
     display: flex;
+    flex-direction: column;
     overflow: visible;
 }
 
@@ -13,6 +14,11 @@
 
 .options {
     height: 100vh;
+    width: 350px;
+}
+
+.addButtonContainer {
+    margin: 20px;
 }
 
 .hideButtonContainer {
@@ -20,16 +26,21 @@
     justify-content: center;
     align-items: end;
     margin: 20px;
-    width: 300px;
-    z-index: 1
+    z-index: 1;
+    flex-direction: column;
+    margin-left: 60px;
 }
 
 .hideButton {
     border: 1px solid white;
     border-radius: 7px;
-    background-color: blueviolet;
-    font-size: 18px;
+    background-color: var(--violet700);
     color: white;
-    width: 100px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
+}
+
+.hideButton:hover {
+    cursor: pointer;
 }

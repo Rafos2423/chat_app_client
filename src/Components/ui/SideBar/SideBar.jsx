@@ -1,27 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import classes from "./SideBar.module.css";
+import { ConnectionContext } from '../../logic/Connection';
+import { useContext } from 'react';
+import Input from "../Input/Input";
 
 const SideBar = () => {
   const [isHidden, setIsHidden] = useState(false);
-  const [buttonLabel, setButtonLabel] = useState("Скрыть");
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setButtonLabel(isHidden ? "Открыть" : "Скрыть");
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, [isHidden]);
+  const { userName, connect } = useContext(ConnectionContext);
 
   return (
     <div className={`${classes.container} ${isHidden ? classes.isHidden : ""}`}>
+      <div className={classes.addButtonContainer}>
+        <Input func={connect} placeHolder={'Чат'} width={270} style={{ backgroundColor: "bisque"}}/>
+      </div>
       <div className={classes.options}></div>
       <div className={classes.hideButtonContainer}>
-        <button
+      <button
           className={classes.hideButton}
           onClick={() => setIsHidden(!isHidden)}
         >
-          {buttonLabel}
+          &lt;&lt;
         </button>
       </div>
     </div>

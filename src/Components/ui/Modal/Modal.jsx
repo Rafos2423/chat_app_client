@@ -4,12 +4,12 @@ import { ConnectionContext } from '../../logic/Connection';
 import { useContext } from 'react';
 
 const Modal = () => {
-    const { connect } = useContext(ConnectionContext);
+    const { login, connect, userName } = useContext(ConnectionContext);
   
     return (
       <div className={classes.modalOverlay}>
         <div className={classes.container}>
-          <Input func={connect} placeHolder={'Имя'} width={300} />
+          <Input func={login} placeHolder={'Имя'} width={300} />
         </div>
       </div>
     );
