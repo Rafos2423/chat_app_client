@@ -17,7 +17,6 @@
     list-style-type: none;
     padding-inline-start: 0px;
     overflow-y: auto;
-    margin-right: 4px;
     overflow-x: hidden;
 }
 
@@ -78,12 +77,12 @@
 }
 
 .options::-webkit-scrollbar-thumb {
-    background-color: bisque;
+    background-color: var(--violet900);
     border-radius: 5px;
 }
 
 .options::-webkit-scrollbar-thumb:hover {
-    background-color: bisque;
+    background-color: var(--violet900);
 }
 
 body {
