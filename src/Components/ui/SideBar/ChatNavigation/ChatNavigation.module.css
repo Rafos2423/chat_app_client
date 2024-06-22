@@ -11,7 +11,8 @@
     font-weight: bold;
     font-size: 18px;
     overflow: hidden;
-    margin-right: 5px;
+    text-overflow: ellipsis;
+    margin-right: 10px;
 }
 
 .time {
@@ -25,6 +26,7 @@
     color: white;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .container {
@@ -48,9 +50,9 @@
     border-radius: 50%;
     opacity: 0;
     transition: 
-    opacity 0.5s ease-in-out,
-    width 0.5s ease-in-out 0.5s,
-    height 0.5s ease-in-out 0.5s;
+        opacity 0.5s ease-in-out,
+        width 0.5s ease-in-out 0.5s,
+        height 0.5s ease-in-out 0.5s;
 }
 
 .selected::before {

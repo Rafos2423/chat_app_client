@@ -21,24 +21,25 @@
 
 .messageHistory {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: block;
+    overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
+.messageHistory::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-track {
+.messageHistory::-webkit-scrollbar-track {
     background: bisque;
 }
 
-::-webkit-scrollbar-thumb {
+.messageHistory::-webkit-scrollbar-thumb {
     background-color: var(--violet700);
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.messageHistory::-webkit-scrollbar-thumb:hover {
     background-color: var(--violet700);
 }
 

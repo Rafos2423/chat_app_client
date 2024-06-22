@@ -22,7 +22,8 @@ export const ConnectionProvider = ({ children }) => {
         setUserName(name)
         setToken(res.token)
         setIsModalVisible(false);
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   const connect = async (chatName) => {

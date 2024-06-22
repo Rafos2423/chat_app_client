@@ -16,7 +16,9 @@
     height: 100vh;
     list-style-type: none;
     padding-inline-start: 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    margin-right: 4px;
+    overflow-x: hidden;
 }
 
 .navBarItem:first-child {
@@ -32,7 +34,10 @@
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
     min-height: 40px;
-    margin-bottom: 5px;
+    margin: 0 20px 5px 20px;
+    width: 310px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .findChatContainer {
@@ -62,4 +67,25 @@
 
 .hideButton:hover {
     cursor: pointer;
+}
+
+.options::-webkit-scrollbar {
+    width: 10px;
+}
+
+.options::-webkit-scrollbar-track {
+    background: var(--violet700);
+}
+
+.options::-webkit-scrollbar-thumb {
+    background-color: bisque;
+    border-radius: 5px;
+}
+
+.options::-webkit-scrollbar-thumb:hover {
+    background-color: bisque;
+}
+
+body {
+    overflow-y: hidden;
 }
