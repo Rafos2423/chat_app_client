@@ -4,7 +4,7 @@ import { ConnectionContext } from '../../logic/Connection';
 import { useContext } from 'react';
 
 const Modal = () => {
-    const { login, connect, userName } = useContext(ConnectionContext);
+    const { login } = useContext(ConnectionContext);
   
     return (
       <div className={classes.modalOverlay}>

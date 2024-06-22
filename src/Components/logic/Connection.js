@@ -36,7 +36,7 @@ export const ConnectionProvider = ({ children }) => {
 
     conn.on("ReceiveMessageAsync", (name, message, receiveAt) =>
       setMessageHistory((prevHistory) => ({
-        ...prevHistory,
+        ...prevHistory || [],
         [chatName]: [
           ...(prevHistory[chatName] || []),
           {

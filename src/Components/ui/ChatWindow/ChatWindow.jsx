@@ -6,7 +6,7 @@ import { ConnectionContext } from '../../logic/Connection';
 
 const ChatWindow = () => {
     const { sendMessage, messageHistory, chatName } = useContext(ConnectionContext);
-    console.log(messageHistory)
+    
     return (
         <div className={classes.container}>
             <div className={classes.header}>{chatName}</div>

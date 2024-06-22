@@ -1,0 +1,61 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.chatName {
+    font-weight: bold;
+    font-size: 18px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.time {
+    color: #BBB;
+    font-size: 12px;
+}
+
+.lastMessage {
+    margin: 3px 15px 0 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.container {
+    height: 75px;
+    border-bottom: 1px solid var(--violet600);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--violet400);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 
+    opacity 0.5s ease-in-out,
+    width 0.5s ease-in-out 0.5s,
+    height 0.5s ease-in-out 0.5s;
+}
+
+.selected::before {
+    width: 400px;
+    height: 300px;
+    opacity: 0.5;
+    transition: all 0.5s ease-in-out;
+}

@@ -5,7 +5,7 @@ const Input = ({func, placeHolder, width, isDark=false}) =>
 {
     const [inputText, setInputText] = useState("");
 
-    const handleKeyPress = (event, func) => {
+    const handleKeyPress = (event) => {
         if (event.key === 'Enter' && event.target.value) {
             func(event.target.value);
             setInputText("");
@@ -13,7 +13,7 @@ const Input = ({func, placeHolder, width, isDark=false}) =>
     };
 
     return <input type='text' className={`${classes.inputField} ${isDark ? classes.dark : ""}`} placeholder={placeHolder} style={{ width: width }}
-        value={inputText} onChange={e => setInputText(e.target.value)} onKeyPress={e => handleKeyPress(e, func)}/>
+        value={inputText} onChange={e => setInputText(e.target.value)} onKeyPress={e => handleKeyPress(e)}/>
 }
 
 export default Input
