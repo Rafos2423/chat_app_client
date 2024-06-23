@@ -4,7 +4,7 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: var(--squash300);
+    background-color: bisque;
     display: flex;
     justify-content: center;
     align-items: center;

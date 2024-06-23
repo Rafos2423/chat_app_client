@@ -1,4 +1,3 @@
-import Label from '../../Label/Label';
 import classes from './ChatNavigation.module.css'
 import { useState, useEffect } from "react";
 

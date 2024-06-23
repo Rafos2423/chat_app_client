@@ -70,7 +70,8 @@ export const ConnectionProvider = ({ children }) => {
         messageHistory,
         isModalVisible,
         chatName,
-        userName
+        userName,
+        messagesCount: messageHistory[chatName]?.length
       }}
     >
       {children}

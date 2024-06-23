@@ -50,7 +50,7 @@
     margin: 20px;
     z-index: 1;
     flex-direction: column;
-    margin-left: 60px;
+    margin-left: 58px;
 }
 
 .hideButton {
@@ -59,9 +59,9 @@
     background-color: var(--violet700);
     color: white;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
     user-select: none;
+    display: flex;
 }
 
 .hideButton:hover {

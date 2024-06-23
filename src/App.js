@@ -6,7 +6,7 @@ import ChatWindow from "./Components/ui/ChatWindow/ChatWindow";
 import { ConnectionContext} from './Components/logic/Connection';
 
 
-function App() {
+const App = () => {
   let { isModalVisible } = useContext(ConnectionContext);
 
   return (

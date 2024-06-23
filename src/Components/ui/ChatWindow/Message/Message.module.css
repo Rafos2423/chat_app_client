@@ -1,6 +1,7 @@
 .container {
     display: flex;
     padding: 3px 100px;
+    box-sizing: border-box;
 }
 
 .wrapper {
@@ -11,6 +12,7 @@
     align-items: center;
     border: 1px solid white;
     max-width: 1000px;
+    min-width: 54px;
 }
 
 .message {
