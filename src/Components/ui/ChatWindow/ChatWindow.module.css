@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     padding-left: 25px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .messageHistory {
@@ -24,6 +24,9 @@
     overflow-y: auto;
     display: block;
     overflow-x: hidden;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    margin: 0px;
 }
 
 .messageHistory::-webkit-scrollbar {
@@ -44,9 +47,8 @@
 }
 
 .inputContainer {
-    padding-top: 10px;
     display: flex;
     justify-content: center;
     align-items: end;
-    margin: 20px 0px;
+    margin: 6px 0px 20px 0px;
 }
