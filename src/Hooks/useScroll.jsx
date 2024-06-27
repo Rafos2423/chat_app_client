@@ -10,24 +10,30 @@ const useScroll = (messagesCount) => {
         top: messagesRef.current.scrollHeight,
         behavior: "smooth",
       });
-      setShowScrollButton(false);
     });
   };
 
   useEffect(() => {
     const messagesElement = messagesRef.current;
-    const handleScroll = () => setShowScrollButton(messagesElement.scrollTop + messagesElement.clientHeight < messagesElement.scrollHeight - 30);
+    const handleScroll = () =>
+      setShowScrollButton(
+        messagesElement.scrollTop + messagesElement.clientHeight <
+          messagesElement.scrollHeight - 30
+      );
 
     messagesElement.addEventListener("scroll", handleScroll);
     return () => messagesElement.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
+    const messagesElement = messagesRef.current;
     if (
-      !showScrollButton &&
-      messagesRef.current.scrollHeight > messagesRef.current.offsetHeight
+      messagesElement.scrollTop + messagesElement.clientHeight <
+      messagesElement.scrollHeight - 30
     )
-      scrollBottom();
+      messagesElement.scrollTo({
+        top: messagesElement.scrollHeight,
+      });
   }, [messagesCount]);
 
   return { messagesRef, showScrollButton, scrollBottom };
