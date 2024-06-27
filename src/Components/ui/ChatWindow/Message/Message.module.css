@@ -1,7 +1,6 @@
 .container {
     display: flex;
-    padding: 3px 100px;
-    box-sizing: border-box;
+    padding: 3px 0px;
 }
 
 .wrapper {

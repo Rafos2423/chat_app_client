@@ -23,12 +23,14 @@
 .messageHistory {
     height: 100vh;
     overflow-y: auto;
-    display: block;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     list-style-type: none;
     padding-inline-start: 0px;
     margin: 0px;
-    box-sizing: border-box;
+    padding: 0px 103px;
+    scrollbar-gutter: stable both-edges;
 }
 
 .messageHistory::-webkit-scrollbar {
@@ -48,11 +50,6 @@
     background-color: var(--violet700);
 }
 
-.messageItem {
-    box-sizing: border-box;
-    width: 100vw;
-}
-
 .pannel {
     display: flex;
     justify-content: space-between;
@@ -62,6 +59,8 @@
 
 .inputContainer {
     margin: 0 0 0 63px;
+    display: flex;
+    overflow-x: hidden;
 }
 
 .scrollButton {
