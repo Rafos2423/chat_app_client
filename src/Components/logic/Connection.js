@@ -6,27 +6,43 @@ export const ConnectionContext = createContext();
 export const ConnectionProvider = ({ children }) => {
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [messageHistory, setMessageHistory] = useState({});
+  const [userChats, setUserChats] = useState([]);
   const [connection, setConnection] = useState([]);
   const [chatName, setChatName] = useState("");
   const [userName, setUserName] = useState([]);
-  const [token, setToken] = useState([]);
+  const [token, setToken] = useState("");
 
   const login = async (name) => {
-    await fetch(`http://localhost:5041/login?userName=${name}`, {
+    await fetch(`http://localhost:5041/auth/login?userName=${name}`, {
       method: "POST",
-    })
+      })
       .then((response) => {
         if (response.ok) return response.json();
       })
-      .then((res) => {
+      .then(async (res) => {
         setUserName(name)
         setToken(res.token)
         setIsModalVisible(false);
+        await getChats(res.token)
       })
       .catch((e) => console.log(e));
   };
 
-  const connect = async (chatName) => {
+  const getChats = async (jwt) => {
+    await fetch(`http://localhost:5041/user`, {
+      headers: {
+        "Authorization": `Bearer ${jwt}`
+      }})
+      .then((response) => {
+        if (response.ok) return response.json();
+      })
+      .then((res) => {
+        setUserChats(res)
+      })
+      .catch((e) => console.log(e));
+  }
+
+  const connect = async (chatId, chatName) => {
     let conn = new HubConnectionBuilder()
       .withUrl("http://localhost:5041/chat", {
         accessTokenFactory: () => token,
@@ -50,7 +66,7 @@ export const ConnectionProvider = ({ children }) => {
     );
 
     await conn.start();
-    await conn.invoke("JoinChatAsync", chatName);
+    await conn.invoke("JoinChatAsync", chatId, chatName);
 
     setConnection(conn);
     setChatName(chatName);
@@ -67,6 +83,7 @@ export const ConnectionProvider = ({ children }) => {
         login,
         connect,
         sendMessage,
+        userChats,
         messageHistory,
         isModalVisible,
         chatName,

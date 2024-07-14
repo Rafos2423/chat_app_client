@@ -1,7 +1,7 @@
 import classes from './ChatNavigation.module.css'
 import { useState, useEffect } from "react";
 
-const ChatNavigation = ({chatName, lastMessage, onClick}) =>
+const ChatNavigation = ({chatId, chatName, lastMessage, onClick}) =>
 {
     const [selected, setSelected] = useState(false);
 
@@ -10,7 +10,7 @@ const ChatNavigation = ({chatName, lastMessage, onClick}) =>
         return () => clearTimeout(timeoutId);
       }, [selected]);
 
-    return <div className={`${classes.container} ${selected ? classes.selected : classes.unselected}`} onClick={_ => {onClick(chatName); setSelected(true)}}>
+    return <div className={`${classes.container} ${selected ? classes.selected : classes.unselected}`} onClick={_ => {onClick(chatId, chatName); setSelected(true)}}>
         <div className={classes.wrapper}>
             <div className={classes.chatName}>{chatName}</div>
             <div className={classes.time}>{lastMessage.receiveAt}</div>

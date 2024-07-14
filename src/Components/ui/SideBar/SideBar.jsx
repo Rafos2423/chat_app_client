@@ -8,7 +8,7 @@ import "primeicons/primeicons.css";
 
 const SideBar = () => {
   const [isHidden, setIsHidden] = useState(false);
-  const { userName, connect, messageHistory } = useContext(ConnectionContext);
+  const { userName, connect, userChats } = useContext(ConnectionContext);
 
   return (
     <div className={`${classes.container} ${isHidden ? classes.isHidden : ""}`}>
@@ -22,11 +22,12 @@ const SideBar = () => {
         />
       </div>
       <ul className={classes.options}>
-        {Object.keys(messageHistory)?.map((x, i) => (
+        {userChats?.map((x, i) => (
           <li key={i} className={classes.navBarItem}>
             <ChatNavigation
-              chatName={x}
-              lastMessage={messageHistory[x].at(-1)}
+              chatId={x.id}
+              chatName={x.name}
+              lastMessage="test"
               onClick={connect}
             />
           </li>
