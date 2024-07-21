@@ -14,7 +14,7 @@ const ChatWindow = () => {
     <div className={classes.container}>
       <div className={classes.header}>{chatName}</div>
       <ul ref={messagesRef} className={classes.messageHistory}>
-        {messageHistory[chatName]?.map((x, i) => (
+        {messageHistory?.map((x, i) => (
           <li key={i} className={classes.messageItem}>
             <Message
               text={x.message}
